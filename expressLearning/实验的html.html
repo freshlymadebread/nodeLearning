@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id='dispalyData'>加载中</h1>
+</body>
+<script>
+    var xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function(){
+    if( xhr.readyState == 4){
+         if( xhr.status >= 200 && xhr.status < 300 || xhr.status == 304){
+             document.getElementById('dispalyData').innerHTML = JSON.parse(xhr.responseText).used + '台正在使用';
+          }
+     }
+};
+
+// 每次需要发请求需要做两步：
+xhr.open("get", 'http://192.168.146.1:3000/paqu', true);
+xhr.send(null);
+</script>
+</html>

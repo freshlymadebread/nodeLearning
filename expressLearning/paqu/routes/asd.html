@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+        <html lang="en-US">
+                <head>
+                        <title title="t-license-monitoring-details">WebAdmin | License Monitoring Details</title>
+
+
+                        <meta charset="utf-8" />
+                        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+                        <meta name="WIBU-SYSTEMS HTML Served Page" content="Data" />
+                        <link href="/images/favicon.ico" rel="shortcut icon" />
+
+                        <meta name="WIBU-SYSTEMS HTML Served Page" content="Configuration" />
+
+                        <link rel="stylesheet" href="/stylesheets/style.css" type="text/css"/>
+                        <link rel="stylesheet" href="/fonts/font-awesome/css/font-awesome.css">
+                        <script type="text/javascript" src="/js/jquery.js"></script>
+                        <script type="text/javascript" src="/js/script.js"></script>
+                        <script type="text/javascript" src="/js/license_monitoring_script.js"></script>
+
+
+        <!--[if lt IE 10]>
+                <link rel="stylesheet" href="/stylesheets/ie9_style.css" type="text/css"/>
+                <script type="text/javascript" src="/js/ie9_script.js"></script>
+        <![endif]-->
+        <!--[if lt IE 9]>
+                <link rel="stylesheet" href="/stylesheets/ie8_style.css" type="text/css"/>
+                <script type="text/javascript" src="/js/ie8_script.js"></script>
+                <script type="text/javascript" src="/js/html5.js"></script>
+        <![endif]-->
+
+                        <script type="text/javascript">
+                                function CancelUser(strId, strIpAddress) {
+                                        return translateAndDo("confirm", ["t-note-delete-user-1", "", "t-note-delete-user-2", ""],
+                                                                               ["Do you really want to delete User", " '" + strId + "' (" + strIpAddress + ") ", "", "?"]);
+                                }
+                        </script>
+                </head>
+                <body onload="onLoadCheck( false ); onLoadLicenseAssignment( true ,  false ,    false ,  false );">
+                        <script>
+                                if ( getCookie("com.wibu.cm.webadmin.lang") != "en-US" ) {
+                                        document.write('<style>span {opacity: 0;} .div_td_m span, span.fa {opacity: 1}</style>');
+                                }
+                        </script>
+
+
+        <header>
+                <div class="div_table">
+                        <div class="div_td_l">
+                                <a href="/index.html"><img src="/images/logo_wibu_systems.png" alt="WIBU-SYSTEMS AG Logo"></a>
+                        </div>
+                        <div class="div_td_m">
+                                <h1><span class="t-main-heading-codemeter">CodeMeter</span> <span class="ct100_t"><span class="t-main-heading-webadmin">WebAdmin</span></span></h1>
+                        </div>
+
+                                <div class="div_td_r">
+                        </div>
+                </div>
+
+                <nav>
+
+                                <ul id="main_nav">
+                                        <li ><a href="/index.html"><span class="t-dashboard">Dashboard</span></a></li>
+                                        <li class="container_nav ">
+                                                <a href="/container.html">
+                                                        <span class="t-container">Container</span>
+                                                        <div class="fa fa-angle-down"></div>
+                                                </a>
+                                                <ul id="container_subnav" class="subnav">
+                                                        <li id="container_all_containers">
+                                                                <a href="/container.html">
+                                                                        <span class="t-all-container">All Container</span>
+                                                                        <span id="container_list_loader" class="fa fa-spinner fa-pulse"></span>
+                                                                        <span class="fa fa-angle-right"></span>
+                                                                </a>            
+                                                                <ul>
+                                                                        <li><iframe id="container_list_frame" class="iframe_class" name="container_list_frame"  frameBorder="0" allowTransparency="true"></iframe></li>
+                                                                </ul>
+                                                        </li>
+
+                                                </ul>
+                                        </li>
+                                        <li class="license_monitoring_nav active">
+                                                <a href="/license_monitoring.html">
+                                                        <span class="t-license-monitoring">License Monitoring</span>
+                                                        <div class="fa fa-angle-down"></div>
+                                                </a>
+                                                <ul id="license_monitoring_subnav" class="subnav">
+                                                        <li><a href="/license_monitoring.html"><span class="t-all-licenses">All Licenses</span></a></li>
+                                                        <li><a href="/license_monitoring/sessions.html"><span class="t-sessions">Sessions</span></a></li>
+
+                                                </ul>
+                                        </li>
+                                        <li class="diagnosis_nav ">
+                                                <a href="/diagnosis/events.html">
+                                                        <span class="t-diagnosis">Diagnosis</span>
+                                                        <div class="fa fa-angle-down"></div>
+                                                </a>
+                                                <ul id="diagnosis_subnav" class="subnav">
+              <li><a href="/diagnosis/events.html"><span class="t-events">Events</span></a></li>
+                                                </ul>
+                                        </li>
+                                        <li class="configuration_nav ">
+
+                                                        <a href="/configuration/server_search_list.html">
+                                                        <span class="t-configuration">Configuration</span>
+                                                        <div class="fa fa-angle-down"></div>
+                                                </a>
+                                                <ul id="configuration_subnav" class="subnav">
+                                                        <li id="basic_config">
+
+                                                                        <a href="/configuration/server_search_list.html">
+                                                                        <span class="t-basic">Basic</span>
+                                                                        <span class="fa fa-angle-right"></span>
+                                                                </a>
+                <ul>
+
+                    <li><a href="/configuration/server_search_list.html"><span class="t-server-search-list">Server Search List</span></a></li>
+
+                    <li><a href="/configuration/proxy.html"><span class="t-proxy">Proxy</span></a></li>
+                  <li><a href="/configuration/webadmin_config.html"><span class="t-webadmin">WebAdmin</span></a></li>
+
+                    <li><a href="/configuration/backup.html"><span class="t-backup">Backup</span></a></li>
+                </ul>
+                                                        </li>
+                                                        <li id="server_config">
+
+                                                                        <a href="/configuration/server_access.html">
+                                                                        <span class="t-server">Server</span>
+                                                                        <span class="fa fa-angle-right"></span>
+                                                                </a>
+                <ul>
+
+                    <li><a href="/configuration/server_access.html"><span class="t-server-access">Server Access</span></a></li>
+                  <li><a href="/configuration/license_access_permissions.html"><span class="t-license-access-permissions">License Access Permissions</span></a></li>
+
+                                                                </ul>
+                                                        </li>
+
+                <li><a href="/configuration/certified_time.html"><span class="t-advanced">Advanced</span></a></li>
+
+                                                </ul>
+                                        </li>
+
+                                        <li  ><a href="/info.html"><span class="t-info">Info</span></a></li>
+                                </ul>
+                </nav>
+
+
+
+<div id="breadcrumb">
+        <div class="bc_table">
+
+
+
+
+
+                <div class="div_td bce_mask">
+
+                <div class="div_td bc_level_0">
+                        <span class="fa fa-users fa-bc ct100_t"></span>
+                </div>
+                <div class="div_td bc_colored_text bc_level_0">
+
+                                                <a href="/license_monitoring.html"><span class="t-all-licenses">All Licenses</span></a>
+
+                </div>
+                <div class="div_td bc_level_1 tip_shadow ">
+                <div class="tip tip_level_0">&nbsp;</div>
+                </div>
+                </div>
+
+                <div class="div_td bce_mask">
+
+                <div class="div_td bc_colored_text bc_level_1 bld">
+
+                                                <a href="/license_monitoring/license_monitoring_details.html?BoxSerial=3-3976917&amp;FirmCode=6000104&amp;ProductCode=1&amp;PiReference=16"><no name> (3-3976917) - <span class="t-entry">Entry</span>6000104:1 (0x2)</a>
+
+                </div>
+                <div class="div_td bc_level_2 tip_shadow bc_last_level">
+                <div class="tip tip_level_1">&nbsp;</div>
+                </div>
+                </div>
+
+
+                <div id="language_selection">
+                        <a id="current_lang" onclick="toggleLanguageSelection();">
+                                <span id="current_lang_flag" class="flag flag_usa"></span>
+                                <span class="lang_country">
+                                        <span id="current_lang_text">English (US)</span>
+                                        <span class="expand_icon fa fa-angle-down"></span>
+                                </span>
+                        </a>
+                        <br/><br/>
+
+                        <div id="language_selection_frame">
+                                <ul class="shadow">
+                                        <li>
+                                                <a id="de-DE" onclick="onclickLanguage('de-DE');">
+                                                        <span class="flag flag_ger"></span>
+                                                        <span class="lang_country" lang="de">Deutsch</span>
+                                                </a>
+                                        </li>
+                                        <li>
+                                                <a id="zh-CN" onclick="onclickLanguage('zh-CN');">
+                                                        <span class="flag flag_chn"></span>
+                                                        <span class="lang_country" lang="zh-CN">中国</span>
+                                                </a>
+                                        </li>
+                                        <li>
+                                                <a id="en-US" onclick="onclickLanguage('en-US');">
+                                                        <span class="flag flag_usa"></span>
+                                                        <span class="lang_country" lang="en-US">English (US)</span>
+                                                </a>
+                                        </li>
+                                        <li>
+                                                <a id="fr-FR" onclick="onclickLanguage('fr-FR');">
+                                                        <span class="flag flag_fra"></span>
+                                                        <span class="lang_country" lang="fr-FR">Français</span>
+                                                </a>
+                                        </li>
+                                        <li>
+                                                <a id="it-IT" onclick="onclickLanguage('it-IT');">
+                                                        <span class="flag flag_ita"></span>
+                                                        <span class="lang_country" lang="it-IT">Italiano</span>
+                                                </a>
+                                        </li>
+                                        <li>
+                                                <a id="ja-JA" onclick="onclickLanguage('ja-JA');">
+                                                        <span class="flag flag_jpn"></span>
+                                                        <span class="lang_country" lang="ja">日本語</span>
+                                                </a>
+                                        </li>
+                                        <li>
+                                                <a id="ru-RU" onclick="onclickLanguage('ru-RU');">
+                                                        <span class="flag flag_rus"></span>
+                                                        <span class="lang_country" lang="ru-RU">русский</span>
+                                                </a>
+                                        </li>
+                                        <li>
+                                                <a id="es-ES" onclick="onclickLanguage('es-ES');">
+                                                        <span class="flag flag_esp"></span>
+                                                        <span class="lang_country" lang="es-ES">Español</span>
+                                                </a>
+                                        </li>
+                                </ul>
+                        </div>
+
+                        <script>
+                                function onclickLanguage(lang) {
+                                        if (window.parent.location.href.indexOf("license_access_permissions") > -1 ||
+                                                window.parent.location.href.indexOf("license_tracking") > -1) {
+                                                var message = translateAndDo("confirm", ["t-note-change-language-reload"], ["The page must be reloaded to change the language."]);
+                                                if (message) {
+                                                        setCookie("com.wibu.cm.webadmin.lang", lang, 365);
+                                                        window.parent.location.reload();
+                                                } else {
+                                                        window.parent.toggleLanguageSelection();
+                                                }
+                                        } else {
+                                                window.parent.changeLanguage(lang);
+                                                window.parent.toggleLanguageSelection();
+                                        }
+                                }
+                        </script>
+
+                </div>
+
+                <div id="help_link">
+                        <a href="javascript:openHelp(window.location.pathname);" class="tooltip_link_out_next">
+                                <span class="fa fa-question-circle"></span>
+                        </a>
+                        <span class="tooltip"><span class="t-help">Help</span></span>
+                </div>
+
+
+                        <div id="access_mode">
+
+                                        <a class="tooltip_link_out_next no_link_cursor">
+                                                <span class="access_mode_specifier">R</span>
+                                        </a>
+                                        <span class="tooltip"><span class="t-access-mode-remote-read">Access Mode: Remote Read Access</span></span>
+
+                        </div>
+
+
+
+
+        </div>
+</div>
+        </header>
+
+                        <script>checkLanguageAndChange(true);</script>
+
+                        <section class="with_bc info_updated_on_section_height">
+
+                                <h1><span class="t-license-monitoring-details">License Monitoring Details</span></h1>
+                                <br/>
+
+                                <table class="product_item_table table_width_auto shadow">
+                                        <tr>
+                                                <th class="text_left"><span class="t-cmcontainer">CmContainer</span></th>
+                                                <th class="text_left"><span class="t-entry">Entry</span></th>
+                                                <th class="text_right"><span class="t-available">Available</span></th>
+                                                <th class="text_right"><span class="t-total">Total</span></th>
+                                        </tr>
+                                        <tr class="product_code_row">
+                                                <td class="text_left">
+                                                        &lt;no name&gt; (3-3976917)
+                                                </td>
+                                                <td class="text_left">
+                                                        <a class="bld" href="/container/product_item_details.html?BoxSerial=3-3976917&amp;FirmCode=6000104&amp;ProductCode=1&amp;Reference=16">6000104:1</a> (0x2)
+                                                </td>
+                                                <td class="text_right">1</td>
+                                                <td class="text_right">5 </td>
+                                        </tr>
+                                </table>
+
+
+                                <br/><br/>
+
+                                <table id="assignment_table" class="product_item_table shadow">
+                                        <tr>
+                                                <th class="text_left"><span class="t-id">ID</span></th>
+                                                <th class="text_left"><span class="t-client-user">Client (User)</span></th>
+                                                <th class="text_right"><span class="t-client-process-id">Client Process ID</span></th>
+                                                <th class="text_left"><span class="t-application-information">Application Information</span></th>
+                                                <th class="text_left"><span class="t-access-mode">Access Mode</span></th>
+                                                <th class="text_left"><span class="t-first-access">First Access</span></th>
+                                                <th class="text_left"><span class="t-last-access">Last Access</span></th>
+                                                <th class="text_left"><span class="t-expires">Expires</span></th>
+                                                <th class="text_left"><span class="t-action">Action</span></th>
+                                        </tr>
+
+
+
+
+
+
+
+
+
+
+
+                                        <tr class="product_code_row">
+                                                <td class="text_left">185</td>
+                                                <td class="text_left">10.21.224.120 (DESKTOP-M21IVCH\Haoran Zhao)</td>
+                                                <td class="text_right">0</td>
+                                                <td class="text_left">digcal.dll </td>
+                                                <td class="text_left">Station Share</td>
+                                                <td class="text_left">2020-04-13 18:51:27</td>
+                                                <td class="text_left">
+
+                2020-04-13 19:52:22
+            </td>
+                                                <td class="text_left"></td>
+                                                <td class="text_left">
+                                                        <form name="CancelUserForm185" action="/actions/CancelUser.html" target="submit_frame" method="post" onsubmit="return CancelUser( 185 , '10.21.224.120')" id="CancelUserForm185">
+                                                                <button type="submit" value="Cancel" id="Submit185" class="inline_btn cancel_user_btn inline_btn_icon tooltip_link_out_next" disabled>
+                                                                        <span class="fa fa-trash-o"></span></button>
+                                                                        <span class="tooltip"><span class="t-btn-cancel-action">Cancel</span></span>
+                                                                        <input type="hidden" name="csrfToken" value="ijBD0NOz1ivU62SC78q75buKU7Q6MTU4Njc4MzQ4OTA2MTI2NDYwMA==">
+                                                                        <input type="hidden" name="referer" value="/license_monitoring/license_monitoring_details.html?BoxSerial=3-3976917&amp;FirmCode=6000104&amp;ProductCode=1&amp;PiReference=16">
+                                                                        <input type="hidden" value="CancelUser" name="Action"  />
+                                                                        <input type="hidden" value="185" name="handleID" />
+                                                        </form>                 
+                                                </td>
+                                        </tr>
+
+                                        <tr class="product_code_row">
+                                                <td class="text_left">1445</td>
+                                                <td class="text_left">::1 (Administrator)</td>
+                                                <td class="text_right">1472</td>
+                                                <td class="text_left">digcal.dll </td>
+                                                <td class="text_left">Station Share</td>
+                                                <td class="text_left">2020-04-13 12:46:02</td>
+                                                <td class="text_left">
+
+                2020-04-13 21:11:00
+            </td>
+                                                <td class="text_left"></td>
+                                                <td class="text_left">
+                                                        <form name="CancelUserForm1445" action="/actions/CancelUser.html" target="submit_frame" method="post" onsubmit="return CancelUser( 1445 , '::1')" id="CancelUserForm1445">
+                                                                <button type="submit" value="Cancel" id="Submit1445" class="inline_btn cancel_user_btn inline_btn_icon tooltip_link_out_next" disabled>
+                                                                        <span class="fa fa-trash-o"></span></button>
+                                                                        <span class="tooltip"><span class="t-btn-cancel-action">Cancel</span></span>
+                                                                        <input type="hidden" name="csrfToken" value="ijBD0NOz1ivU62SC78q75buKU7Q6MTU4Njc4MzQ4OTA2MTI2NDYwMA==">
+                                                                        <input type="hidden" name="referer" value="/license_monitoring/license_monitoring_details.html?BoxSerial=3-3976917&amp;FirmCode=6000104&amp;ProductCode=1&amp;PiReference=16">
+                                                                        <input type="hidden" value="CancelUser" name="Action"  />
+                                                                        <input type="hidden" value="1445" name="handleID" />
+                                                        </form>                 
+                                                </td>
+                                        </tr>
+
+                                        <tr class="product_code_row">
+                                                <td class="text_left">1480</td>
+                                                <td class="text_left">180.201.6.18 (DESKTOP-835BQG7\Chunb)</td>
+                                                <td class="text_right">0</td>
+                                                <td class="text_left">digcal.dll </td>
+                                                <td class="text_left">Station Share</td>
+                                                <td class="text_left">2020-04-13 16:39:00</td>
+                                                <td class="text_left">
+
+                2020-04-13 21:11:00
+            </td>
+                                                <td class="text_left"></td>
+                                                <td class="text_left">
+                                                        <form name="CancelUserForm1480" action="/actions/CancelUser.html" target="submit_frame" method="post" onsubmit="return CancelUser( 1480 , '180.201.6.18')" id="CancelUserForm1480">
+                                                                <button type="submit" value="Cancel" id="Submit1480" class="inline_btn cancel_user_btn inline_btn_icon tooltip_link_out_next" disabled>
+                                                                        <span class="fa fa-trash-o"></span></button>
+                                                                        <span class="tooltip"><span class="t-btn-cancel-action">Cancel</span></span>
+                                                                        <input type="hidden" name="csrfToken" value="ijBD0NOz1ivU62SC78q75buKU7Q6MTU4Njc4MzQ4OTA2MTI2NDYwMA==">
+                                                                        <input type="hidden" name="referer" value="/license_monitoring/license_monitoring_details.html?BoxSerial=3-3976917&amp;FirmCode=6000104&amp;ProductCode=1&amp;PiReference=16">
+                                                                        <input type="hidden" value="CancelUser" name="Action"  />
+                                                                        <input type="hidden" value="1480" name="handleID" />
+                                                        </form>                 
+                                                </td>
+                                        </tr>
+
+                                        <tr class="product_code_row">
+                                                <td class="text_left">1635</td>
+                                                <td class="text_left">180.201.6.200 (DESKTOP-5CKAALI\sdu)</td>
+                                                <td class="text_right">0</td>
+                                                <td class="text_left">digcal.dll </td>
+                                                <td class="text_left">Station Share</td>
+                                                <td class="text_left">2020-04-13 13:02:28</td>
+                                                <td class="text_left">
+
+                2020-04-13 21:11:00
+            </td>
+                                                <td class="text_left"></td>
+                                                <td class="text_left">
+                                                        <form name="CancelUserForm1635" action="/actions/CancelUser.html" target="submit_frame" method="post" onsubmit="return CancelUser( 1635 , '180.201.6.200')" id="CancelUserForm1635">
+                                                                <button type="submit" value="Cancel" id="Submit1635" class="inline_btn cancel_user_btn inline_btn_icon tooltip_link_out_next" disabled>
+                                                                        <span class="fa fa-trash-o"></span></button>
+                                                                        <span class="tooltip"><span class="t-btn-cancel-action">Cancel</span></span>
+                                                                        <input type="hidden" name="csrfToken" value="ijBD0NOz1ivU62SC78q75buKU7Q6MTU4Njc4MzQ4OTA2MTI2NDYwMA==">
+                                                                        <input type="hidden" name="referer" value="/license_monitoring/license_monitoring_details.html?BoxSerial=3-3976917&amp;FirmCode=6000104&amp;ProductCode=1&amp;PiReference=16">
+                                                                        <input type="hidden" value="CancelUser" name="Action"  />
+                                                                        <input type="hidden" value="1635" name="handleID" />
+                                                        </form>                 
+                                                </td>
+                                        </tr>
+
+
+
+
+                                </table>
+
+
+
+                        </section>
+
+
+
+                        <iframe id="submit_frame" name="submit_frame" src="about:blank" frameBorder="0" allowTransparency="true"></iframe>
+
+                        <div id="info_bar">
+                                <p><span class="t-information-last-updated-on">Information last updated on</span> 2020-04-13 21:12:50</p>
+                        </div>
+
+
+                        <footer>
+        <div id="sb_table">
+          <div id="current_server_mask" >
+            <div class="sb_column" id="cs_text">
+              <p>
+                <span class="t-current-server">Current Server</span>:
+                <span id="current_server" class="bld">
+
+                    AFAAW-707250950 (180.201.3.202)
+                </span>
+              </p>
+            </div>
+
+              <div class="sb_column" id="cs_button_column">
+                <img class="bottom" src="/images/Button_ServerExchange_1.png" alt="Change Server">
+                <img class="top" src="/images/Button_ServerExchange_0.png" alt="Change Server">
+              </div>
+
+          </div>
+
+                                                <div class="sb_column">
+                                                        <a class="sb_info_button" onclick="toggleSbNoteWindow(this);"><span class="fa fa-info"></span></a>
+                                                </div>
+                                        <div id="webadmin_version" >
+                                                <p>
+                                                        <span class="t-webadmin-version">WebAdmin Version</span>: <span class="bld">6.81</span>
+                                                </p>
+                                        </div>
+
+
+
+                                </div>
+      </footer>
+
+      <div id="sb_note_window" class="shadow">
+        <h2 class="t-notes">Notes</h2>
+                          <ul id="sb_note_window_list"></ul>
+      </div>
+
+                  <div id="overlay"></div>
+      <noscript>
+        <input id="noscript_close_cb" type="checkbox">
+        <label class="noscript_close" for="noscript_close_cb">X</label>
+        <div id="noscript_warning">
+          <img src="/images/icon_warning.png" alt="Note">
+          <p><span class="bld"><span class="t-note">Note</span>:</span> <span class="t-no-js-note-text">JavaScript is disabled! Enable JavaScript to use all functions of WebAdmin optimally.</span></p>
+        </div>
+      </noscript>
+
+        <div id="server_selection_window">
+          <h1><span class="t-server-found">Server found</span>:</h1>
+          <span id="serverselection_loader" class="std_loader fa fa-spinner fa-pulse"></span>
+          <iframe id="serverselection_frame" class="iframe_class" name="serverselection_frame" frameBorder="0" allowTransparency="true"></iframe>
+          <input type="checkbox" id="checkbox_ip_address" name="checkbox_ip_address" value="ip_address" /><label id="label_checkbox_ip_address" for="checkbox_ip_address"><span class="t-use-ip-address">Use IP-Address</span></label><br/>
+          <button type="button" class="btn config_btn" id="btn_cancel" onclick="closeServerSelection()"><span class="t-cancel">Cancel</span></button>
+          <button type="button" class="btn config_btn" id="btn_apply" onclick="onSelectServer( 22350 )" disabled><span class="t-apply">Apply</span></button>
+        </div>
+
+
+
+                </body>
+        </html>

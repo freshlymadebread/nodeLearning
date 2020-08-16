@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"> 
+    <title>WebAdmin 设备查看</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        body{
+            margin:auto 100px
+        }
+        #mark{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            height: 100%;
+            width: 100%;
+            z-index: 999999;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background: #2a2222;
+            opacity: .5;
+        }
+    </style>
+</head>
+<body>
+    <div id='mark'>
+        <!-- <div id='box'></div> -->
+        <img src='./loading.gif'/>
+    </div>
+    <h1 id='dispalyData'>加载中</h1>
+    <table class="table" id='infoTable'>
+        <caption>近期用户</caption>
+       <thead>
+          <tr>
+             <th>客户端</th>
+             <th>第一次访问</th>
+             <th>最后一次访问</th>
+          </tr>
+       </thead>
+       <tbody>
+          <tr>
+             <td>数据加载中</td>
+             <td>数据加载中</td>
+             <td>数据加载中</td>
+          </tr>
+          <tr>
+             <td>数据加载中</td>
+             <td>数据加载中</td>
+             <td>数据加载中</td>
+          </tr>
+          <tr>
+             <td>数据加载中</td>
+             <td>数据加载中</td>
+             <td>数据加载中</td>
+          </tr>
+          <tr>
+             <td>数据加载中</td>
+             <td>数据加载中</td>
+             <td>数据加载中</td>
+          </tr>
+          <tr>
+             <td>数据加载中</td>
+             <td>数据加载中</td>
+             <td>数据加载中</td>
+          </tr>
+       </tbody>
+    </table>
+</body>
+<script>
+    var xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function(){
+    if( xhr.readyState == 4){
+        document.getElementById('mark').style.display ='none';
+         if( xhr.status >= 200 && xhr.status < 300 || xhr.status == 304){
+            document.getElementById('infoTable').style.display ='table';
+            var data =  JSON.parse(xhr.responseText)
+            document.getElementById('dispalyData').innerHTML ='共有'+data.all + '台机器，' + data.used + '台正在使用';
+            for(let i = 0 ; i < data.user.length ; i++){
+                $('tbody tr')[i].cells[0].innerHTML =  data.user[i][0]
+                $('tbody tr')[i].cells[1].innerHTML =  data.user[i][1]
+                $('tbody tr')[i].cells[2].innerHTML =  data.user[i][2]
+            }
+          }
+          else{
+            document.getElementById('dispalyData').innerHTML ='请求失败，请检查webadmin服务器是否处于启动状态';
+            document.getElementById('infoTable').style.display ='none';
+          }
+     }
+};
+
+// 每次需要发请求需要做两步：
+xhr.open("get", 'http://123.56.56.250:3000/paqu', true);
+xhr.send(null);
+</script>
+</html>
